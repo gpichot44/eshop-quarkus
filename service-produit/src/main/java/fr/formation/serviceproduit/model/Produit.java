@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Produit {
     @Id
     @UuidGenerator
-    private String id;
+    private Integer id;
 
     private String libelle;
     private BigDecimal prix;

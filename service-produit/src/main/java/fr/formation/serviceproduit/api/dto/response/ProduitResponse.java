@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class ProduitResponse {
-    private String id;
+    private Integer id;
     private String libelle;
     private BigDecimal prix;
     private int note;
@@ -19,7 +19,7 @@ public class ProduitResponse {
         resp.setId(produit.getId());
         resp.setLibelle(produit.getLibelle());
         resp.setPrix(produit.getPrix());
-
+        resp.setNote(produit.getNote());
         return resp;
     }
 }
