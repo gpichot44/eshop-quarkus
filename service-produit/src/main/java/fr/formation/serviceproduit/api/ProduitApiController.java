@@ -29,6 +29,24 @@ public class ProduitApiController {
     private final ProduitRepository repository;
     private final CommentaireFeign commentaireFeign;
 
+    @GetMapping("/existId/{id}")
+    public Integer existId(@PathVariable("id") Integer id) {
+        log.debug("Recherche d'un id {} ...", id);
+
+        return this.repository.findByIdOptional(id)
+            .orElseThrow(NotFoundException::new)
+            .getId();
+    }
+
+    @GetMapping("/prixById/{id}")
+    public BigDecimal getPrixById(@PathVariable("id") Integer id) {
+        log.debug("Recherche du prix du produit {} ...", id);
+
+        return this.repository.findByIdOptional(id)
+            .orElseThrow(NotFoundException::new)
+            .getPrix();
+    }
+
     @GetMapping
     public List<ProduitResponse> findAll() {
         log.debug("Listing des produits ...");

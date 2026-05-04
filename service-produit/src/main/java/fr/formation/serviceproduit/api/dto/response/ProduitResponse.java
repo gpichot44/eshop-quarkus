@@ -3,15 +3,13 @@ package fr.formation.serviceproduit.api.dto.response;
 import java.math.BigDecimal;
 
 import fr.formation.serviceproduit.model.Produit;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+
 public class ProduitResponse {
     private Integer id;
     private String libelle;
     private BigDecimal prix;
-    private int note;
+    private boolean notable;
 
     public static ProduitResponse convert(Produit produit) {
         ProduitResponse resp = new ProduitResponse();
@@ -19,7 +17,7 @@ public class ProduitResponse {
         resp.setId(produit.getId());
         resp.setLibelle(produit.getLibelle());
         resp.setPrix(produit.getPrix());
-        resp.setNote(produit.getNote());
+        resp.setNotable(produit.isNotable());
         return resp;
     }
 }
