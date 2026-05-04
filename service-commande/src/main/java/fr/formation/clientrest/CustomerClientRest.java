@@ -12,6 +12,6 @@ public interface CustomerClientRest {
 
     @GET
     @Path("/client/{id}")
-    public String findClientById(@PathParam("id") String id);
+    public String findClient(@PathParam("id") String id);
 
 }
