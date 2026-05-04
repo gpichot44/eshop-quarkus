@@ -1,9 +1,9 @@
 package fr.formation.serviceproduit.repo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import fr.formation.serviceproduit.model.Produit;
 
-public interface ProduitRepository extends JpaRepository<Produit, String> {
+public class ProduitRepository implements PanacheRepositoryBase<Produit, Integer> {
 
 }
