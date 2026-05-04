@@ -9,28 +9,34 @@ import org.slf4j.LoggerFactory;
 
 import api.dto.request.CreateClientRequest;
 import api.dto.response.ClientResponse;
-import clientrest.ClientClientRest;
+import clientrest.CommandeClientRest;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import model.Client;
 import repo.ClientRepository;
+import org.jboss.resteasy.reactive.RestResponse;
 
 @Path("/api/client")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ClientRessource {
 
 private static Logger log = LoggerFactory.getLogger(ClientRessource.class);
 
     @RestClient
     @Inject
-    private ClientClientRest clientClientRest;
+    private CommandeClientRest commandeClientRest;
 
     @Inject
     private ClientRepository repository;
@@ -85,7 +91,7 @@ private static Logger log = LoggerFactory.getLogger(ClientRessource.class);
     @DELETE
     @Path("/{id}")
     public Response deleteById(@PathParam("id") String id) {
-        boolean isDeletable = this.clientClientRest.isDeletable(id);
+        boolean isDeletable = this.commandeClientRest.isDeletable(id);
 
         if (!isDeletable) {
             log.debug("Ce client {} a déjà passé une commande et ne peut être supprimé !", id);
