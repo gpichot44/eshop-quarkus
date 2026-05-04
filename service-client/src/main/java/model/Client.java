@@ -15,6 +15,15 @@ public class Client {
     private String prenom;
     private String civilite;
 
+    public Client() {}
+    
+    public Client(String id, String nom, String prenom, String civilite) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.civilite = civilite;
+    }
+
     public String getId() {
         return id;
     }
