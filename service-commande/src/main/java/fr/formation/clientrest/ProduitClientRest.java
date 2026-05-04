@@ -6,12 +6,11 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 
-@Path("/client")
-@RegisterRestClient(configKey = "client-service")
-public interface CustomerClientRest {
+@Path("/produit")
+@RegisterRestClient(configKey = "produit-service")
+public interface ProduitClientRest {
 
     @GET
-    @Path("/client/{id}")
-    public String findClient(@PathParam("id") String id);
-
+    @Path("/produit/{id}")
+    public String findProduit(@PathParam("id") String id);
 }
